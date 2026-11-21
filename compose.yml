@@ -2,10 +2,11 @@ services:
   app:
     build: .
     container_name: app_service
+    restart: unless-stopped
     ports:
       - "1500:8000"
-    volumes:
-      - ".:/var/www/html"
+    # volumes:
+    #   - ".:/var/www/html"
     environment:
       - DB_CONNECTION=mysql
       - DB_HOST=mysql
