@@ -7,14 +7,18 @@ services:
       - "1500:8000"
     # volumes:
     #   - ".:/var/www/html"
+    env_file:
+      - .env
     environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_DATABASE=demo_app_db
-      - DB_USERNAME=root
-      - DB_PASSWORD=demopass123
-      - SESSION_DRIVER=file
+      APP_ENV: production
+      APP_DEBUG: "false"
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: demo_app_db
+      DB_USERNAME: demo_app_db
+      DB_PASSWORD: demopass123
+      SESSION_DRIVER: file
     depends_on:
       mysql:
         condition: service_healthy
